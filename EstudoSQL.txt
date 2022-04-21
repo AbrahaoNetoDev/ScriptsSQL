@@ -1,0 +1,106 @@
+CREATE TABLE Tipos_Carro (
+    Id_Tipo_Carro int IDENTITY(1,1) PRIMARY KEY,
+	Descricao Varchar(10) not Null
+)
+
+Insert Into Tipos_Carro Values('SUV')
+Insert Into Tipos_Carro Values('SEDAN')
+Insert Into Tipos_Carro Values('HATCH')
+Insert Into Tipos_Carro Values('PICK-UP')
+
+CREATE TABLE Carros (
+    Id_Carro int IDENTITY(1,1) PRIMARY KEY,
+	Nome_Carro Varchar(20) not Null,
+	Cor_Carro Varchar(10),
+	Id_Tipo_Carro int not Null
+)
+
+ALTER TABLE Carros 
+	ADD CONSTRAINT FK_Carros_Tipos_Carro 
+	FOREIGN KEY(Id_Tipo_Carro) 
+REFERENCES Tipos_Carro(Id_Tipo_Carro)
+
+Insert Into Carros Values('Palio', 'Branco', 3)
+Insert Into Carros Values('Gol', 'Cinza', 3)
+Insert Into Carros Values('Hb-20', 'Preto', 3)
+Insert Into Carros Values('Celta', 'Amarelo', 3)
+Insert Into Carros Values('Civic', 'Branco', 2)
+Insert Into Carros Values('Corolla', 'Prata', 2)
+Insert Into Carros Values('Jetta', 'Azul', 2)
+Insert Into Carros Values('Monza', 'Preto', 2)
+Insert Into Carros Values('2008', 'Branco', 1)
+Insert Into Carros Values('Cactus', 'Preto', 1)
+Insert Into Carros Values('Hilux', 'Branco', 4)
+Insert Into Carros Values('S10', 'Prata', 4)
+Insert Into Carros Values('Amarok', 'Branco', 4)
+Insert Into Carros Values('SW4', 'Preto', 4)
+Insert Into Carros Values('3008', 'Preto', 1)
+Insert Into Carros Values('Ecosport', 'Prata', 1)
+
+CREATE TABLE Vendas_Carros(
+    Id_Venda_Carro int IDENTITY(1,1) PRIMARY KEY,
+	Data_Venda_Carro DateTime not Null,
+	Valor_Venda_Carro Decimal(18, 2) not Null,
+	Ativo_Venda_Carro Bit default(0),
+	Id_Carro int not Null
+)
+
+ALTER TABLE Vendas_Carros 
+	ADD CONSTRAINT FK_Vendas_Carros 
+	FOREIGN KEY(Id_Carro) 
+REFERENCES Carros(Id_Carro)
+
+
+Insert Into Vendas_Carros Values('2018-29-11 11:20:11.101', 100000.01, 0, 1)
+Insert Into Vendas_Carros Values('2020-12-12 12:20:12.098', 2000450.20, 1, 3)
+Insert Into Vendas_Carros Values('2010-30-01 22:30:53.983', 3000.40, 1, 5)
+Insert Into Vendas_Carros Values('2010-30-06 21:30:53.983', 86000.50, 0, 6)
+Insert Into Vendas_Carros Values('2001-30-09 23:30:53.583', 36400.45, 0, 12)
+Insert Into Vendas_Carros Values('2010-04-02 23:30:53.683', 445000.20, 1,11)
+Insert Into Vendas_Carros Values('2010-30-09 23:30:53.983', 3750000.05, 0, 5)
+Insert Into Vendas_Carros Values('2010-10-07 23:30:53.973', 30000.20, 0, 7)
+Insert Into Vendas_Carros Values('2020-30-09 23:30:53.783', 34000.00, 1, 1)
+Insert Into Vendas_Carros Values('2004-02-09 23:30:53.983', 455600.80, 0, 4)
+Insert Into Vendas_Carros Values('2010-30-09 23:30:53.983', 464300.70, 0, 8)
+Insert Into Vendas_Carros Values('2020-20-10 23:30:53.333', 67700.50, 0, 9)
+Insert Into Vendas_Carros Values('2010-30-09 23:30:53.983', 434560.00, 0, 12)
+Insert Into Vendas_Carros Values('2010-30-11 23:30:53.343', 40000.00, 0, 16)
+Insert Into Vendas_Carros Values('2010-22-02 23:30:53.983', 56000.00, 0, 11)
+Insert Into Vendas_Carros Values('2010-29-03 23:30:53.983', 40000.00, 0, 13)
+Insert Into Vendas_Carros Values('2010-30-05 23:30:53.453', 6000.00, 0, 9)
+Insert Into Vendas_Carros Values('2010-14-07 23:30:53.943', 40000.00, 0, 3)
+Insert Into Vendas_Carros Values('2014-30-09 23:30:53.983', 4067000.00, 0, 5)
+Insert Into Vendas_Carros Values('2010-11-11 23:30:53.663', 40000.00, 1, 8)
+Insert Into Vendas_Carros Values('2016-30-09 23:30:53.773', 40000.00, 0, 2)
+Insert Into Vendas_Carros Values('2010-11-12 23:30:53.553', 6000640.00, 0, 4)
+Insert Into Vendas_Carros Values('2017-12-09 23:30:53.773', 40000.00, 1, 6)
+Insert Into Vendas_Carros Values('2010-30-07 23:30:53.933', 880000.00, 0, 1)
+Insert Into Vendas_Carros Values('2018-27-11 23:30:53.986', 456600.00, 0, 5)
+Insert Into Vendas_Carros Values('2010-24-12 23:30:53.983', 3764600.00, 0, 11)
+Insert Into Vendas_Carros Values('2020-22-06 23:30:53.323', 2764000.00, 1, 14)
+Insert Into Vendas_Carros Values('2000-30-09 23:30:53.983', 40000.00, 0, 14)
+Insert Into Vendas_Carros Values('2017-18-02 23:30:53.983', 20000.00, 0, 4)
+Insert Into Vendas_Carros Values('2010-17-08 23:30:53.983', 60000.00, 0,3)
+Insert Into Vendas_Carros Values('2019-29-09 23:30:53.983', 475000.00, 0, 12)
+Insert Into Vendas_Carros Values('2016-14-09 23:30:53.983', 4400.00, 0, 4)
+Insert Into Vendas_Carros Values('2014-27-12 23:30:53.983', 40000.00, 0, 5)
+Insert Into Vendas_Carros Values('2010-23-11 23:30:53.983', 3443000.00, 0, 6)
+Insert Into Vendas_Carros Values('2013-12-09 23:30:53.983', 43400.00, 0, 4)
+Insert Into Vendas_Carros Values('2010-23-09 23:30:53.983', 64600.00, 0, 7)
+Insert Into Vendas_Carros Values('2020-22-12 23:30:53.983', 67600.00, 0, 9)
+Insert Into Vendas_Carros Values('2010-21-09 23:30:53.983', 40000.00, 0, 2)
+Insert Into Vendas_Carros Values('2010-12-11 23:30:53.983', 67600.00, 0, 1)
+Insert Into Vendas_Carros Values('2000-30-09 23:30:53.983', 656000.00, 0, 10)
+Insert Into Vendas_Carros Values('2011-23-02 23:30:53.983', 5577000.00, 0, 11)
+Insert Into Vendas_Carros Values('2012-20-09 23:30:53.983', 7755500.00, 0, 4)
+Insert Into Vendas_Carros Values('2013-10-07 23:30:53.983', 756500.00, 0,12)
+Insert Into Vendas_Carros Values('2014-30-09 23:30:53.983', 566700.00, 0, 4)
+Insert Into Vendas_Carros Values('2016-20-08 23:30:53.983', 40000.00, 0,10)
+Insert Into Vendas_Carros Values('2010-30-05 23:30:53.983', 56000.00, 0, 4)
+Insert Into Vendas_Carros Values('2010-30-03 23:30:53.983', 5650.00, 0, 8)
+Insert Into Vendas_Carros Values('2010-30-05 23:30:53.983', 545450.00, 0, 2)
+Insert Into Vendas_Carros Values('2010-30-06 23:30:53.983', 40000.00, 0, 5)
+Insert Into Vendas_Carros Values('2010-28-02 23:30:53.983', 40000.00, 0, 6)
+Insert Into Vendas_Carros Values('2010-30-09 23:30:53.983', 40000.00, 0, 4)
+
+								 
